@@ -2,7 +2,7 @@
 clf
 clear all
 clc
-commandStr='python /users/Abdullah_Rahman/Downloads/solar_dome_demo.py ';
+commandStr='python [absolute dir]/solar_dome_demo.py ';
 
 
 
