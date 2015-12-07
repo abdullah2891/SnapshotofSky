@@ -1,7 +1,5 @@
 # SnapshotofSky
 
- Snapshot
-
 Scanning the sky  with single photo-diode(with 2 servos) and
 transmitting with [Xbee adapter](http://www.digi.com/products/xbee-rf-solutions/modules/xbee-pro-900hp) (Zigbee protocol).
 This project is a part of a project intended to find the position of light
