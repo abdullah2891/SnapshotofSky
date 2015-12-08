@@ -10,9 +10,8 @@
 #include <Servo.h> 
 #include <XBee.h>
  
-Servo myservo1;  // create servo object to control a servo 
-                // twelve servo objects can be created on most boards
-Servo myservo2;
+Servo myservo1;  //servo object
+Servo myservo2;  // "      "
 XBee xbee = XBee();  // create the XBee object
 
 uint8_t payload[36] = { 0 };
@@ -29,27 +28,23 @@ int byte_pos=0;
  
 void setup() 
 { 
-  myservo1.attach(9);  // attaches the servo on pin 9 to the servo object 
+  myservo1.attach(9);  // use pin 9 for servo 
   myservo2.attach(10);
   
-                        // waits 15ms for the servo to reach the position 
-   myservo1.write(90);
-   myservo2.write(90);
-   Serial.begin(115200);      //changed the baud rate
-   xbee.setSerial(Serial);
-   delay(2000);
-    
+  myservo1.write(90);
+  myservo2.write(90);
+  Serial.begin(115200);      //changed the baud rate
+  xbee.setSerial(Serial);
+  delay(2000);
+  
 } 
  
 void loop() 
 { 
-  for(pos1 = 10; pos1 <= 170; pos1 += 10) // goes from 0 degrees to 180 degrees 
+  for(pos1 = 10; pos1 <= 170; pos1 += 10) // Half circle in 10 degree increments
   {   
-
-    // in steps of 1 degree 
-    
-    myservo1.write(pos1);              // tell servo to go to position in variable 'pos' 
-    //delay(250);      // waits 15ms for the servo to reach the position 
+    myservo1.write(pos1); // tell servo to go to position in variable 'pos' 
+    //delay(200);       // waitfor the servo to reach the position 
     
     byte_pos=0;
     for(pos2 = 170; pos2>=0; pos2-=10)     // goes from 180 degrees to 0 degrees 
@@ -72,11 +67,11 @@ void loop()
         Serial.print("\n"); 
           // tell servo to go to position in variable 'pos' 
           */
-        delay(200);                                                                         // waits 500ms for the servo to reach the position 
+        delay(200);   // wait for the servo to reach the position 
         
         byte_pos+=1;
       } 
-      delay(100);
+      delay(200);
        xbee.send(zbTx);
       
       
